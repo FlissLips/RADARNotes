@@ -113,4 +113,42 @@ $\phi_{hemisphere} =  \int_{-\pi}^{\pi}\int_{0}^{\pi/2}L A \cos \theta_{s} sin \
 $\phi_{hemisphere} = \pi L A_s = MA_s$
 
 ### Off-Axis Detector
+ Def: Where the target and detector are not parallel, and instead have non-zero view angles.
+
+An example is shown here:
+![Off Axis Detector Diagram](images/OffAxisDetector.png)
+ 
+ Here the detector flux is 
+
+ $\phi_d = L A_s \cos \theta_{s} \Omega_d = L A_s \cos \frac{A_d}{(r/\cos \theta_s)^2\leq }$
+
+### Parallel Surfaces
+
+Occurs in two offset parallel angles. 
+
+An example is shown here:
+
+![Parallel Surfaces Diagram](images/ParallelSurfaces.png)
+
+Looking at the geometry the flux is:
+$\phi_d = L A_s \cos \theta_{s} \Omega_d = L A_s \cos \frac{A_d \cos \theta_d}{(r/\cos \theta_s)^2}$
+
+### Point Targets
+Def: where the projected target area is much smaller than the range to the target, meaning the solid angle is $\approx 0$
+
+An example is shown here (A model of a point target viewed by a camera)
+![PointTarget Diagram](images/PointTargetDiag.png)
+
+For a circular lens:
+$\Omega = \frac{\pi D^2}{4r^2}$
+
+Therefore the flux (using the intensity) is: $\phi = I \Omega = I\frac{\pi D^2}{4r^2}$
+
+We use the irradance on the detector here, as we don't need to consider the radiance on a point target.
+Therefore, the irradiance is:
+$E = \frac{\phi}{A_d} = \frac{I}{r^2}$
+
+This here is known as the **inverse square law**. This showns as the irradiance increases, the range decreases. This is similar to RADAR, where the range is inversely proportional to the power. but is not as affecting.
+
+___
 

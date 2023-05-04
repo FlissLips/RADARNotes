@@ -1,4 +1,4 @@
-# Electro Optics Systems Design Notes
+# Electro-Optics Systems Design Notes
 
 ## Introduction
 
@@ -40,24 +40,24 @@ How it works
 - Places modulated IR energy onto the seeks to force it to break lock
 
 What's required here?
-- Good resolution camera, but it's a smaller range
-- Good LoS, not as neccessary as the targeting pods though due to smaller range
-- Wide FoR, you need to reach **everywhere**,
-- Aggressive slew rate, again for the reaching and the tracking performance
+- Good resolution camera, but it's a smaller range, so it's not as critical as it is in the tracking pods
+- Good LoS, not as neccessary as the targeting pods though due to smaller range.
+- Wide FoR, you need to reach **everywhere**. (The one part where you can't reach is where the missile will come from)
+- Aggressive slew rate, again for the reaching. This means for it will need good tracking performance
 
 ### EO System Performance
 - Calculated with a fully integrated model
-- 2 systems that we can look in isolation: **Optical train** and sightline pointing and stabilisation
+- 2 systems that we can look in isolation: **Optical train** and **sightline pointing and stabilisation**
 
 ___
 
 ## EO Sensor Modelling
-Def:  Derivation of performance of a devices taking into account of handling of output
+**Def**:  Derivation of performance of a devices taking into account of handling of output
 
 ![EO Model](images/EOModelDiag.png)
 
 ## Radiometery
-- It's basically when given a source and optical system configuration, how much power from the source is collected by the detector surface?
+- When given a source and optical system configuration, how much power from the source is collected by the detector surface?
 - There's a lot of radiometric terms that can be expressed in either energy or photon-based units:
 
 ![Radiometry Table](images/RadiometryTable.png)
@@ -72,7 +72,7 @@ $E = \frac{hc}{\lambda}$
 - **Exitance & Irradiance**:      
     - *Exitance* is how much flux is emmited from a source over a given area.
     - *Irradiance* is how much flux is recieved from the source over a given area
-    - Both have the same equation: $M = \frac{d\Phi}{dA}$
+    - Both have the same equation: $M = \frac{d\Phi}{dA}$ for Exitance, and $E = \frac{d\Phi}{dA}$ for Irradiance
 - **Intensity** : The amount of radiation energy from a point target (per solid angle) AKA $I = \frac{d\Phi}{d\Omega}$
 - Radiance: The flux per unit projected area per solid angle AKA $L = \frac{d^2\Phi}{d(A\cos\theta)d\Omega}$ 
 
@@ -82,4 +82,24 @@ Consider the following case:
 Where $A_d$ = detector angle, $A_s$ = source angle, $\Omega_s$ = source solid angle, $\Omega_d$ = detector solid angles, and $r$ = range
 
 Therefore, assuming small angles, the flux on the detector: 
+
 $ \Phi = LA_s\Omega_d = L\frac{A_sA_d}{r^2} = LA_d\Omega_s $ 
+
+### Tilted Reciever
+If your reciever is tilted wrt the source:
+![Tilted Reciever Diagram](images/TiltedReciever.png)
+Then:
+
+$ \Phi = LA_s\Omega_d = L\frac{A_sA_d\cos\theta_d}{r^2}$
+
+## Lambertian Radiator
+### Introduction
+- Relying on reflected energy means you have to create some kind of model for this. 
+- This can be done with physics-based rendering, where each material is assigned absorption characteristics to each material, which is very complicated.
+- We can instead create a simplication called a **Lambertian surface**
+- It's a surface where the radiance $L$ is independemt of view $\theta_s$, and that $L$ is constant
+- This doesn't mean that it will radiation an equal amount of flux into all solid angles.
+- Here, the relationship between $L$ and $M$ is: $M = L\pi$
+### Relationship between Exitance and Radiance
+- Assuming a Lambertian surface means any point on this surface radiates into a hemisphere
+- The flux is then given by:

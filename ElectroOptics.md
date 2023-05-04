@@ -151,4 +151,24 @@ $E = \frac{\phi}{A_d} = \frac{I}{r^2}$
 This here is known as the **inverse square law**. This showns as the irradiance increases, the range decreases. This is similar to RADAR, where the range is inversely proportional to the power. but is not as affecting.
 
 ___
+## Atomspheric Transmission
 
+- An important thing to model as, estimating flux losses from propgating through the atomsphere cannot be done just from first-principles. This means that models must have a signficant experimental component.
+- It's more important here than in RADAR, as the atomsphere attenuates the optical radiation **a lot** more here.
+
+The 3 main attenuation mechanisms are:
+
+### 1. Absorption
+Def: The process where energy contained in the photons are devoured by gas molecules and aerosols. This radiation gets transformed into KE and heat.
+- Depends on the wavelength of the radiation
+- This can lead to *transmission windows* (spectral bands where the attenuation is minimal). These look like this: ![Atomspheric Transmission Windows](images/AtomsphericTransmissionWindows.png)
+### 2. Scattering
+Def: where the photons are redirected along a different propagation path
+- Scatter will depend on the ratio between the wavelength and the size of the particles obstructing the path of the photons.
+### 3. Refraction
+Def: Refracts the radiation due to the refractive index (RI) of the atomsphere
+- RI is dependent on the current temperatue
+- The refraction induces directional errors, which are more pronounced at long ranges and low altitudes over land and sea
+---
+## Target Models - Sources of Radiation
+- 

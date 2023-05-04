@@ -171,4 +171,14 @@ Def: Refracts the radiation due to the refractive index (RI) of the atomsphere
 - The refraction induces directional errors, which are more pronounced at long ranges and low altitudes over land and sea
 ---
 ## Target Models - Sources of Radiation
-- 
+- How do we create a model of our actual target? There's lots of ways of doing it (CFD, FEA), and this is dependent on the level of exactness required
+- Simplest model to use for our target = **blackbody**
+- All target models will need to define emittance via target transmission, absorption or reflective properties.
+
+### Transmission, Absorption & Reflection
+- A material may transmit, reflect, absorb or emit radiation and in general doesmore than one of these at a time.
+- For example, take the below diagram which shows light incident on a parallel plane: ![TAR Diagram](images/TARDiag.png)
+- Here, we can see from the beam of light, some is reflected ($\rho$), some is absorbed ($\alpha$) and some is transmitted ($\tau$).
+- From the conservation of power, the sum of these powers must add up to the incident power:
+$\Phi_0 =\Phi_a+\Phi_r+\Phi_t$
+- If you normalise against the incident power, you get: $1 = $

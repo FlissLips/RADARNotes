@@ -15,7 +15,7 @@ So what constitutes and EO System? Well, there are 4 main components in each sys
 
 ### Problems with EO
 - **Limited range** (10-20km)
-- **Can't work in all weathe**r, particularly water, as it absorbs the infrared radation/visible light
+- **Can't work in all weather**, particularly water, as it absorbs the infrared radation/visible light
 
 ### Airbone EO - Basic Principle of Operation
 - Better precision than RADAR, as it uses a beam to provide good resolution
@@ -103,3 +103,14 @@ $ \Phi = LA_s\Omega_d = L\frac{A_sA_d\cos\theta_d}{r^2}$
 ### Relationship between Exitance and Radiance
 - Assuming a Lambertian surface means any point on this surface radiates into a hemisphere
 - The flux is then given by:
+  $\phi_{hemisphere} = \int L A \cos \theta_{s} d \Omega_{d}$ **(1)**
+
+- In spherical coordinates:
+$d\Omega_d= \frac{dA_d}{r^2}= \frac{r^2\sin \theta d \theta d \phi}{r^2} = sin \theta d \theta d \phi$ **(2)**
+- Sub **(2)** into **(1)** :
+$\phi_{hemisphere} =  \int_{-\pi}^{\pi}\int_{0}^{\pi/2}L A \cos \theta_{s} sin \theta d \theta d \phi$ **(3)** 
+- Evaluate **(3)**
+$\phi_{hemisphere} = \pi L A_s = MA_s$
+
+### Off-Axis Detector
+

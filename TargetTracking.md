@@ -33,3 +33,22 @@ If it is a point target, then centroiding is used:
 - Then the centroid of each 'white' cluster is found, and the centre of the target is obtained.
 
 ---
+## Initiation
+- This phase bridges the gap between hardware and software.
+- Basically, the function of this segment is to apply a heuristic to the measurements delivered, and if it returns true, initiate a new track entity in the database. 
+- A simple example would be "3 from 4" heuristic i.e. if observations and recieved in the same/neigbouring cell for 3 out 4 consecutive scans, return true.
+
+---
+## Association
+- The objective of this stage is to match a new observation to an existing tracks.
+- This process uses track gates, as shown below:
+
+![Track Gates Diagram](images/TargetTrackingAssociation.png)
+
+- To this decision rules (like distance metrics) can be used.
+- Dynamic size gating is also used (if the target is highly manoeuvrable, use a bigger gate)
+
+___
+
+## Filtering
+

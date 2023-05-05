@@ -16,7 +16,8 @@ So what constitutes and EO System? Well, there are 4 main components in each sys
 ### Problems with EO
 - **Limited range** (10-20km)
 - **Can't work in all weather**, particularly water, as it absorbs the infrared radation/visible light
-
+---
+## Examples of EO Uses
 ### Airbone EO - Basic Principle of Operation
 - Better precision than RADAR, as it uses a beam to provide good resolution
 - Downside, the range is lesser (very fine, like looking through a drinking straw)
@@ -45,7 +46,9 @@ What's required here?
 - Wide FoR, you need to reach **everywhere**. (The one part where you can't reach is where the missile will come from)
 - Aggressive slew rate, again for the reaching. This means for it will need good tracking performance
 
-### EO System Performance
+___
+
+## EO System Performance
 - Calculated with a fully integrated model
 - 2 systems that we can look in isolation: **Optical train** and **sightline pointing and stabilisation**
 
@@ -74,7 +77,7 @@ $E = \frac{hc}{\lambda}$
     - *Irradiance* is how much flux is recieved from the source over a given area
     - Both have the same equation: $M = \frac{d\Phi}{dA}$ for Exitance, and $E = \frac{d\Phi}{dA}$ for Irradiance
 - **Intensity** : The amount of radiation energy from a point target (per solid angle) AKA $I = \frac{d\Phi}{d\Omega}$
-- Radiance: The flux per unit projected area per solid angle AKA $L = \frac{d^2\Phi}{d(A\cos\theta)d\Omega}$ 
+- **Radiance**: The flux per unit projected area per solid angle AKA $L = \frac{d^2\Phi}{d(A\cos\theta)d\Omega}$ 
 
 ### A $\Omega$ Product
 Consider the following case:
@@ -95,14 +98,13 @@ $ \Phi = LA_s\Omega_d = L\frac{A_sA_d\cos\theta_d}{r^2}$
 ## Lambertian Radiator
 ### Introduction
 - Relying on reflected energy means you have to create some kind of model for this. 
-- This can be done with physics-based rendering, where each material is assigned absorption characteristics to each material, which is very complicated.
+- This can be done with physics-based rendering, where each material is assigned absorption characteristics, which is very complicated.
 - We can instead create a simplication called a **Lambertian surface**
 - It's a surface where the radiance $L$ is independemt of view $\theta_s$, and that $L$ is constant
 - This doesn't mean that it will radiation an equal amount of flux into all solid angles.
 - Here, the relationship between $L$ and $M$ is: $M = L\pi$
 ### Relationship between Exitance and Radiance
-- Assuming a Lambertian surface means any point on this surface radiates into a hemisphere
-- The flux is then given by:
+- Assuming a Lambertian surface means any point on this surface radiates into a hemisphere. The flux is then given by:
   $\phi_{hemisphere} = \int L A \cos \theta_{s} d \Omega_{d}$ **(1)**
 
 - In spherical coordinates:
@@ -181,4 +183,49 @@ Def: Refracts the radiation due to the refractive index (RI) of the atomsphere
 - Here, we can see from the beam of light, some is reflected ($\rho$), some is absorbed ($\alpha$) and some is transmitted ($\tau$).
 - From the conservation of power, the sum of these powers must add up to the incident power:
 $\Phi_0 =\Phi_a+\Phi_r+\Phi_t$
-- If you normalise against the incident power, you get: $1 = $
+- If you normalise against the incident power, you get: $1 = \frac{\Phi_a}{\Phi_0} + \frac{\Phi_r}{\Phi_0} + \frac{\Phi_t}{\Phi_0} = \alpha + \rho + \tau$
+- For a body with no net heat transfer (thermal equilibrium) the absorption and emmision properties are related via *Kirchoffs Law*
+### Emissivity
+- Def: the ratio of the radiant exitance of a real body to that of an ideal body
+- Equation = $\epsilon(\lambda) = \frac{M(\lambda)}{M^{BB}(\lambda)}$ where $M^{BB}$ is the radiant exitance of a blackbody 
+- A blackbody (the perfect emmiter) has n emissivity value $\epsilon$ of 1.0 or 100%
+- The directional spectral emissivity = $\epsilon_d(\lambda,\theta,\phi) = \frac{L(\lambda,\theta,\phi) }{L^{BB}(\lambda)}$
+---
+## Optics
+Optics are important to an EO system as they are needed to:
+- Gather the radiative flux from a scene
+- Magnify the components in the scene
+- Transfer the flux to an EO detector via an **Optical Train**
+
+The optical can be crudely represented by using **thin lens geometrical optics**.
+### The thin lens approximation
+This approximation states that we can replace a complex optical assembly with a single thin lens.
+
+A diagram is shown below:
+![Thin lens approximation diagram](images/ThinLensApprox.png)
+Where $p$ = object distance, $q$ = image distance, $h_o$ = object height, $h_i$ = image height, $f$ = focal length
+
+Formulae:
+- Focal length: $\frac{1}{f} = \frac{1}{p} + \frac{1}{q}$
+- Optical magnification: $M = \frac{h_i}{h_o} = -\frac{q}{p}$
+
+### Instantenous FoV (IFoV)
+- Def: the angular coverage, defined in terms of either the full anfle or the half angle
+- Adding the IFOV to the Thin lens diagram using the half angle definition looks like this:
+![IFoV](images/IFOV.png)
+
+$IFoV = | \tan^{-1}(\frac{h_i}{q})|$
+
+### Diffraction Limit
+Come back to
+### Spatial Frequency
+Come back to
+
+### Modulation Transfer Function
+Def: a measure of the effectiveness of an optical system for specific spatial frequencies. It is the Fourier Transform of the Point Spread Function.
+![MTF vs Spatial Frequency](images/MTFGraph.png)
+From this graph, we can see that as the Spatial Frequency increases, the MTF decreases. As the SF increases, object becomes blurred due to diffraction, spatial sampling and other optical effects. Therefore, we could say that MTF tells us how the image is degraded.
+
+Also, since it is the Fourier of the PSF, it obeys the principle of superposition, as shown below:
+![MTF Superposition Graph](images/MTFSuperposition.png)
+

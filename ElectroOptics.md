@@ -223,9 +223,65 @@ Come back to
 
 ### Modulation Transfer Function
 Def: a measure of the effectiveness of an optical system for specific spatial frequencies. It is the Fourier Transform of the Point Spread Function.
+
 ![MTF vs Spatial Frequency](images/MTFGraph.png)
+
 From this graph, we can see that as the Spatial Frequency increases, the MTF decreases. As the SF increases, object becomes blurred due to diffraction, spatial sampling and other optical effects. Therefore, we could say that MTF tells us how the image is degraded.
 
 Also, since it is the Fourier of the PSF, it obeys the principle of superposition, as shown below:
 ![MTF Superposition Graph](images/MTFSuperposition.png)
 
+___
+
+## Electro-Optic Detectors
+
+What do these do? Well, they produce a measurable electrical output in response to radiation intercepted by the sensing element.
+
+This sensing is based on 2 principles:
+
+1. Thermal Effects of radiation
+2. Quantum Effects of radiation
+
+### Thermal Detectors 
+This includes:
+- Bolometers
+- Pyroelectrics
+- Thermocouples
+
+### Photodetectors AKA quantum detectors
+- Operates via the *Photoelectric Effect*. Basically, it works by the photons in the radiation interacting with the atoms, and if the energy is sufficient, and electron will be moved from the **valence band** to the **covalance band**.
+- In the covalence band, the electrons are free to move as current, which can then be measured.
+
+![Photodetector Diag](images/PhotodetectorDiag.png)
+
+### Detector Performance
+- Since the detector is basically a transducer that converts electromagnetic flux into electrical signals, the spectral responsivity of the detector can be defined as: $\Re(\lambda) = \frac{V_{det}}{\phi_{det}}$
+  - *Side note, a transducer is just a component that converts energy into one form or another*
+- Thermal detectors had a flat response, by photons detecors response is a function of the wavelength.
+- Spectral responsivity curves can be very different, but they all terminate at the **cut-off wavelength** $\lambda_{cut}$, which is the wavelength that contains just enough energy to cause an electron to cross the bandgap. Equation: $\lambda_{cut} = \frac{hc}{E_g}$
+- Spectral responsvitivty can also be expressed in the frequency domain using the FT of the time-domain impulse response. 
+### Noise Equivalent Bandwidth Come back to
+- Def: the width of a flat bandpass filter that will pass the same amount of white-noise power as the original transfer function. 
+- It can be found using the frequency response discussed previously (FT of the time domain impulse response.)
+- Equation: $\Delta f = \int_{0}^{\infin} |\frac{\Re(f)}{\Re(f = 0)}|^2 df$
+
+![Noise Equivalent Bandwidth](images/NoiseEquivBandwidth.png)
+
+### Noise Sources
+Some of the major Electo-Optic Noises:
+- **Photon Noise**: caused by fluctuations in generation rate
+- **Shot Noise** - due to the quantisation of photons and electron state
+- **Dark Current** - A complex product of specific semiconductor construction. Found in photovoltaic devices
+- **Fixed-Pattern Noise** - due to detector responsivitiy nonlinearities.
+
+### Noise Equivalent Power
+- Def: the amount of flux that would produce an output equal to the RMS value of the noise.
+- This is used to specifiy the noise performance of a detector, in order to predict the SNR for a given amount of flux.
+- Equation: $NEP = \frac{\phi_{det}}{SNR}$
+
+### Specific Detectivity $(D^*)$
+- Def: merit used to specifiy the performance of a detector.
+- Equation: $D^* = \frac{\sqrt{Ad} \sqrt{\Delta f}}{NEP}$ where $Ad$ is the area of the photosensitive region, $\Delta f$ is the NE bandwidth.
+- From this, we can we that $D*$ is inversely proportional to the NEP, so therefore a higher $D^*$ corresponds to a better sensitivity.
+
+---

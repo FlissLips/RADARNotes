@@ -285,3 +285,5 @@ Some of the major Electo-Optic Noises:
 - From this, we can we that $D*$ is inversely proportional to the NEP, so therefore a higher $D^*$ corresponds to a better sensitivity.
 
 ---
+## EO System Stabiliation and Tracking Come back to
+

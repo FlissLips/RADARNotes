@@ -217,9 +217,20 @@ Formulae:
 $IFoV = | \tan^{-1}(\frac{h_i}{q})|$
 
 ### Diffraction Limit
-Come back to
+- So, in optics theory, an image is compressed to an infitesimal point at the focal plane of the lens.
+- An reality, the light is subject to interference effects. Due to diffraction, the flux of the light spreads out to form a disk pattern. 
+- The spreading is known as the Point Spread Function. 
+- This pattern defines the optical resolution.
+
+![Point Spread Function](images/DiffractionLimit.png)
+
 ### Spatial Frequency
-Come back to
+- Def: How often a repeating pattern changes in a given distance or space.
+
+![Spatial Frequency](images/SpatialFrequency.png)
+
+- A cycle is distance between peaks of the same intensity.
+
 
 ### Modulation Transfer Function
 Def: a measure of the effectiveness of an optical system for specific spatial frequencies. It is the Fourier Transform of the Point Spread Function.
@@ -233,7 +244,7 @@ Also, since it is the Fourier of the PSF, it obeys the principle of superpositio
 
 ___
 
-## Electro-Optic Detectors
+## Electro-Optic Detectors and Detector Performance
 
 What do these do? Well, they produce a measurable electrical output in response to radiation intercepted by the sensing element.
 
@@ -284,6 +295,50 @@ Some of the major Electo-Optic Noises:
 - Equation: $D^* = \frac{\sqrt{Ad} \sqrt{\Delta f}}{NEP}$ where $Ad$ is the area of the photosensitive region, $\Delta f$ is the NE bandwidth.
 - From this, we can we that $D*$ is inversely proportional to the NEP, so therefore a higher $D^*$ corresponds to a better sensitivity.
 
----
-## EO System Stabiliation and Tracking Come back to
+### Range performance
+
+- Essentially, we want to convert all these EO System parameters into a range estimate, whilst keeping up with fine spatial resolution
+- We want to keep up with spatial resolution, as you won't be able to recognise or identify a target, but only detect that it's there
+- Johnson's Criteria = a set of criteria used to evaluate the performance of Electro-Optical systems. These criteria include Detection, Recognition, Indentification, Acquistion, FoV and Resolution.
+  - $R = \frac{sf T_{size}}{N_{cyc}}$, where $sf$ = spatial frequency, $R$ = range , $T_{size}$ = size of target, $N_{cyc}$ = no of cycles need for task (Detection = 1, Recognition = 4)
+___
+## EO System Stabiliation and Tracking 
+- The aim of stabilisation systems is to prevent/limit jitter.
+  - Jitter = How does the LoS move away from what we want.
+- Aim of tracking system = to follow target in space. AKA direct the LoS towards target.
+
+Imagery collection
+- Target must be kept in FoV under vehicle motion
+- Helped with stabilsation
+
+### Performance Requirements
+
+Two fundamental functions for LoS stabilisation/tracking
+- Dynamic disturbance isolation: allows us isolate the LoS from the disturbance
+- Pointing: points the LoS where you need to.
+
+### Stabilation Requriments
+
+- **Jitter**: the human viewing bandwidth = 2Hz
+  - Critical for those where a human must be in-the-loop, such as missile technology which requires human authorisation. Even if it has an automatic tracker system, it will still need that human check, and therefore human will have to checked wrt human viewing.
+- Requirements of automatic tracker:
+  - Sensor Sensitivity (SNR)
+  - Resolution (Quanitified by MTF)
+  - Frame-to-frame jitter (target following/tracking)
+- Optical design
+  - Optical magnification affects FoV. This is because as the magnification increases, the focal length of the lens is  also increases, meaning the area (+ details) captured by the sensor is reduced, which creates a smaller FoV.
+
+### Stabilation Subsystem Design Relations
+
+![Stabilation Design Relations](images/StabilationDesignRelations.png)
+- **Gimballed Mass**: If there's an offset between the rotation axis the the sensors CoG, when the vehicle accelerates, you will get a torque, which will cause a measurement in the wrong direction.
+- **Bearing size**: Affected by the gimballed mass. You will need consider the friction will be caused by the **gimballed mass**
+-  **Coulomb friction parameters**: describes the amount of dry function that occurs between two surfaces.
+- All values here add up to a **total disturbance torque**, which gets passed to a servo, with the servo isolation characterisitics.
+- Here we need to consider the physical limits of the servo (Structural Resonances and Bandwidth Limitations) 
+- The structural resonances mean you need to design your system to not perform at any resonances.
+- The bandwidth limitations is how big your bandwidth can be with the servo. For low structural resonances, the bandwidth needs to be low. For a low total disturbance torque, the bandwidth needs to high. Therefore, a good controller for the total distubrance torque needs to be designed.
+
+
+
 

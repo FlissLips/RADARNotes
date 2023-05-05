@@ -339,6 +339,26 @@ Two fundamental functions for LoS stabilisation/tracking
 - The structural resonances mean you need to design your system to not perform at any resonances.
 - The bandwidth limitations is how big your bandwidth can be with the servo. For low structural resonances, the bandwidth needs to be low. For a low total disturbance torque, the bandwidth needs to high. Therefore, a good controller for the total distubrance torque needs to be designed.
 
+### Methods of Sightline Stabilation
 
+- Passive isolation
+  - An example would spring and damper systems
+  - Mainly used to get rid of linear motion, but not really for angular motion/disortion
+  - Used in conjuction with active system to assist with high frequency vibrations
 
+- Electronic Stabilations
+  - AKA digital image stabilisation
+  - Peforms image re-registration in software to produce stable images, using high constrast/edges/objects that the image software can latch onto.
+  - Drawbacks:
+    - Can't do it over large range
+    - Limitiation on vibration frequencies. 
+    - Unsuitable to laser beam pointing (active system like LiDAR).
+
+- Strapdown stabilation
+  - Where the measurement sensors are mounted to the moving platform rather than a stabile base
+- The advantages of this is that is more robust and reliable as the sensors are not subject to external disturbances or suspension.
+
+- Direct gyro stabilisation
+  - A system with a gimbal set with the sensor mounted onto the inner gimbal, to keep it stationary. 
+  - To provide a feedback of the cameras torque movement, a gyro is used. They will measure the elevation rate and the cross-elevation rate. 
 

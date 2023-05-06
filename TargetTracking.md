@@ -1,6 +1,6 @@
 # Target Tracking
 
-The biggest problem in target tracking is one of estimation. We need to esimate due to NOISE, as it is in every signal, and in order to exact our desired signal, we need to estimate the signal from the measured values.
+The biggest problem in target tracking is one of estimation. We need to esimate due to **noise**, as it is in every signal, and in order to exact our desired signal, we need to estimate the signal from the measured values.
 
 So whay not just use filtering theory for this? Well, the problem is that tracking is much more complex. They are many things to consider:
 - Is the measurement real?
@@ -50,5 +50,44 @@ If it is a point target, then centroiding is used:
 
 ___
 
-## Filtering
+## Filtering (+ State Estimation)
+### Introduction 
+- Aim: to get the underlying estimate using the observations from your sensors, as close as we can to the true measurement
 
+- Issues:
+    - Long revisit times
+    - Inaccurate position estimation 
+    - Sensor inaccuracies (noises, biases)
+
+### $\alpha-\beta$ filter 
+Its a sub-optimal filter, closely related to the Kalman Filter. 
+
+Filter equations
+- $\hat{x}_n = \hat{x}_{n}^{-} + \alpha (x_n -\hat{x}_{n}^{-})$ **(1)**
+    -
+    - This equation is known as the difference equation.
+    - **In simple terms, this equation finds the difference between the true value and estimate value at the current time step, multiplies that difference by $\alpha$ and adds it to the current (*a priori*) value of the state estimate.**
+    - The '$\space \hat{} \space$' means that the value is an estimate, and the $n$ refers to the time step we are at. 
+    - The '$\space s^{-} \space $' and '$\space s^{+} \space $' values state whether a value is *a priori* or *a posteriori*.
+        - *A priori* is before the value has been changed, and *a posteriori* is after the value has been changed.
+        - For example in the code ` x = x + 1`, the `x` on the left hand size is *a posteriori* and the `x` on the right is *a priori*.
+    - $a$ here acts a smoothing parameter, and is always a value between 0 and 1. 
+- $\hat{\dot{x}}_n = \hat{\dot{x}}_{n-1} + \frac{\beta}{T_s} (x_n -\hat{x}_{n}^{-})$ **(2)**
+    - 
+    - This equation is known as the difference equation for the rate of change of the state
+    - **In simple terms, this equation finds the current rate of change state, by finding the difference of the true value and estimate value at the current time step, multiplying it by $\frac{\beta}{T_s}$ , and adding this to the previous rate of change state.**
+    - The $\dot{s}$ means the rate of change of a state. Since this is not measured by the sensor, this must be calculated and stored for the next time step.
+        - For example, if you were measuring **range**, the $\hat{\dot{x}}$ would be the range of change of range AKA **velocity**. 
+    - The $T_s$ means the time between samples, and this is used with the difference equation to make sure the correct units are being used.
+- $\hat{x}_{n+1} = \hat{x}_{n} + \hat{\dot{x}}_{n}T_s$ **(3)**
+    -
+    - Euler integration to get to get to the next state.
+### $ \alpha - \beta - \gamma$ filter
+
+Bascially the same thing as the $\alpha-\beta$ filter, but has an acceleration term, and slightly different integration term. This is used if the target is highly manoeurvable.
+
+Equations:
+- $\hat{\ddot{x}}_{n} = \hat{\ddot{x}}_{n-1} + \frac{\gamma}{{T_{s}}^{2}} (x_n - \hat{x}_{n}^{-})$ 
+    -
+- $\hat{x}_{n+1} = \hat{x}_{n} + \hat{\dot{x}}_{n} T_s + \frac{{T_s}^2}{2} \hat{\ddot{x}}_{n}$
+    -

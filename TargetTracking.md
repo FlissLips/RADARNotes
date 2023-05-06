@@ -91,3 +91,25 @@ Equations:
     -
 - $\hat{x}_{n+1} = \hat{x}_{n} + \hat{\dot{x}}_{n} T_s + \frac{{T_s}^2}{2} \hat{\ddot{x}}_{n}$
     -
+
+### Selecting alpha and beta values
+- Bandwidth of the filter depends of alpha
+    - a = 1, rapid response to manoeuvring targets, wide bandwidth
+    - a = 0 , good smoothing of errors, narrow bandwidth
+- Setting beta is normally a function of alpha
+    - Benedict-Bordner equation will minimise output noise variance at steady states
+    - Also, the target motion can be approximated by discrete white noise acceleration errors
+### Kalman filter
+For more accurate smoothing prediction, a Kalman filter is better as it incorporates models of both the target dynamcis and the errors in the model and measurements.
+
+Linear state matrix:
+
+![State Matrix](images/KalmanFilterSM.png)
+- $w_n$ = process noise matrix
+- $x_n$ = state matrix
+- $y_n$ = measurment matrix
+- $v_n$ = measurment noise matrix
+
+![KF Recursion](images/KalmanFilterRecursion.png) 
+
+**Add to notes in my own time**

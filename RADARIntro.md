@@ -214,4 +214,7 @@ ___
 - From previously, we can see that there is a relationship between the probability of false alarm, the probabilty of detection, and the SNR
 - How can we improve SNR? Well, one of the ways is pulse integraton. This works by adding the rarget echo returns from several pulses together.
 - Why would this work? Well, when you start to add the returns together, the signals will all be in phase and therefore increase, but the noise will all be out of phase and therefore cancelled out.
-- The number of pulse $n$ which can be collected from a point target is: $n = \frac{\theta_{b}}{}$
+- The number of pulse $n$ which can be collected from a point target is: $n = \frac{\theta_{b} f_p}{\dot{\theta}_s} = \frac{\theta_{b} f_p}{6 \omega_{m}}$ where $f_p$ is the **pulse repetition frequency**, $\theta_{b}$ is the antenna beamwidth, $\dot{\theta}_s$ is the antenna scan rate in deg/s, $\omega_{m}$ is the antenna scan rate in rpm.
+- PRF is very important in RADAR design.
+
+

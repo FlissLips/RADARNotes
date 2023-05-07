@@ -140,10 +140,44 @@ $R_{max}^{4} = \frac{P_t G_t A_e \sigma}{(4 \pi)^{2} k T_0 \beta_{n} F_n (S/N)_{
 
 Where:
 
- - $R_{max}$  = Maximum RADAR range
+- $R_{max}$  = Maximum RADAR range
 - $P_t$ = Power at isotropic source 
+- $G$ = Gain
+- $\sigma$ = Radar Cross Section
+- $A_e$ = Antenna Effective Aperture
+- $k$ = Boltzmann's Constant
+- $T_0$ = Temperature reference (290K)
+- $\beta_{n}$ = Noise Bandwifth
+- $F_n$ = Noise Figure
+- $(S/N)_{min}$ = Minimum Signal-to-Noise Ratio
+- $L_s$ = System Losses
+- $L_p$ = Atomspheric Propagation Losses
 
+### Components 
 
-
+1. System Noise and Noise Bandwidth:
+    - Def: Unwanted, randomly-fluctuating voltage which reduces the probability of reliable detection.
+    - System noise equation: $N = k T_0 \beta_{n}$
+2. Noise Figure:
+    - Def: The ratio of actual noise to the noise power that would be present if the reciever had 0 noise figure
+    - Equation: $\frac{N_{out}}{k T_0 \beta_{n} G_a}$ where $N_{out}$ = noise from the reciever, $G_a$ is the antenna gain
+    - Equation in terms of S-N: $F_n = \frac{S_{in} / N_{in}}{S_{out} / N_{out}}$
+ 3. Bringing terms together
+    - **Come back to**
+ 4. Loss Factor:
+    - There are two different types of losses: Atmospheric propagation losses and System losses
+    - **Come back to**
 ___
-##
+## Probabilities of Detection and False Alarm
+
+### Definitions
+ - False Alarm: Occurs when the noise causes the measueed voltage to exceed the detection threshold, but there is no target present.
+ - Missed Detection: When the target signature falls bellow the detection threshold
+
+In order to try and minimise both of these values, we need to derermine the minimum SNR required to acheive a specific probability of detecion and probability of false alarm.
+
+### Noise Probability Density Functions
+
+The noise entering the IF filter is assumed to be Gausian, therfore the PDF function can be used here:
+
+Equation: $p(v) = \frac{1}{\sqrt{2 \pi \psi_{0}}} exp \frac{}{}$

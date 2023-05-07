@@ -92,3 +92,21 @@ Where:
 Therefore:
 
 $D_B = R_X \theta$ (rads)
+
+### Surveillance Radar Equation
+
+### Derivation
+1. Start with a search radar scanning in both azimuth and elevation:
+![Surveillance Diagram](images/SurveillanceRadarEquation.png)
+2. Assuming the dimension of the antenna $A_e  \approx L_1 * L_2$, the main lobe solid angle is: $\theta = \frac{\lambda^{2}}{A_{e}}$ **(1)**
+3. The total scan time is then: $T_{scan} = T_{i} \cdot \frac{\Phi}{\theta}$ **(2)**
+ where $\Phi$ is the total scan solid angle, and $T_{i}$ is the integration time (for detection performance) 
+ 3. Rearrange **(2)** to make the main lobe solid angle the subject: $\theta = \frac{\Phi T_i}{T_{scan}}$ (3)
+ 4. For a PRF $f_p$, the number of pulses for integration will be $n = f_p T_i$ (4). Sub (4) into (3): $\theta = \frac{\Phi T_i}{T_{scan}} = \frac{\Phi n}{f_p T_{scan}}$ (5)
+ 5. Subsituting (5) into (1): $A_e = \frac{\lambda^{2} f_p T_{scan}}{\Phi n}$ (6)
+7. Then, to find the average power, assume a matched filer is used $\beta = 1/\tau$, then: $P_{av} = P_t\tau f_p = \frac{P_t f_p}{\beta}$ (7)
+8. Then subsitute (6) and (7) into the RADAR Equation ($[S/N]_{min} = \frac{P_t A_e^2 \sigma n}{4 \pi \lambda^2 k T_0 \beta F_n R^4}$): $[S/N]_{min} = P_{av} A_e \frac{T_{scan}}{\Phi} \frac{1}{4 \pi k T_0 F_n} \frac{\sigma}{R^4}$ 
+9. Rearrange as a range equation:
+$R^4 = P_{av} A_e \frac{T_{scan}}{\Phi} \frac{1}{4 \pi k T_0 F_n} \frac{\sigma}{[S/N]_{min}}$
+1. Assuming $F_n$ and $[S/N]_n$ are minimal: $R_{max}^4 \propto \frac{P_{av} A_e}{\Phi / T_{scan}}$
+

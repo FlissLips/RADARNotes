@@ -72,7 +72,7 @@ In this section, I've decided to to order it by each RADAR equation (Simplest, S
 
 Equation:
 
-Reflected Power flux density recievd = $\frac{P_t G_t \sigma}{(4 \pi R^2)^{2}}$ Watts/m^2
+**Reflected Power flux density recievd = $\frac{P_t G_t \sigma}{(4 \pi R^2)^{2}}$ Watts/m^2**
 
 Where
 - $P_t$ = Power at isotropic source 
@@ -81,7 +81,69 @@ Where
 - R = range 
 
 ### Components
-1. Well, you start with an Isotropic antenna, which is an antenna which is one whcih radiates uniformly in directions. Assuming there's no attenuation loss: Power density at range R $ = \frac{P_t}{4 \pi R^{2}}$
-2. Then, you include the antenna gain. This is the ratio of the radiation intnsity of an antenna in a given direction, compared to that of an isotropic radiatior. We need to add this term, as in practice, we won't be using isotropic antennas. The equation then becomes: Max Power Density at Range R $= \frac{P_t G_t}{4 \pi R^{2}}$
+1. Well, you start with an Isotropic antenna, which is an antenna which is one whcih radiates uniformly in directions. 
+    - **Assuming there's no attenuation loss: Power density at range R $= \frac{P_t}{4 \pi R^{2}}$**
+2. Then, you include the antenna gain. 
+    - This is the ratio of the radiation intnsity of an antenna in a given direction, compared to that of an isotropic radiatior. We need to add this term, as in practice, we won't be using isotropic antennas. 
+    - **The equation then becomes: Max Power Density at Range R $= \frac{P_t G_t}{4 \pi R^{2}}$**
+  
+1. RADAR Cross Section 
+    - Def: the effective area of the object that reflects back the radar signal in the direction of the RADAR transmitter
+    - This means it is basically a measure of how detectable that object is.
+    - Important note: it's not directly correlated to the physical cross-sectional area. 
+    - Under this assumption, at the RADAR, reflected power flux density recieved = $\frac{P_t G_t \sigma}{(4 \pi R^{2})^{2}}$ Watts/m^2
+
+
+### Simple RADAR Equation(s)
+There are 3 possible forms for this equation. 
+
+The first one:
+
+$R_{max} = \left [ \frac{P_t G_t A_e \sigma}{(4 \pi )^{2} S_{min}} \right ]^{\frac{1}{4}}$
+
+The other 2 are noting that for a monostatic RADAR $G_t = G_r  = G$, and that you can sub for $A_e$ and for $G$:
+
+$R_{max} = \left [ \frac{P_t G^2 \lambda^{2} \sigma}{(4 \pi )^{3} S_{min}} \right ]^{\frac{1}{4}}$
+
+$R_{max} = \left [ \frac{P_t A_{e}^{2} \sigma}{4 \pi \lambda^{2} S_{min}} \right ]^{\frac{1}{4}}$
+
+Where:
+- $R_{max}$  = Maximum RADAR range
+- $P_t$ = Power at isotropic source 
+- $G_t$ = Gain at the source
+- $G_r$ = Reciever Gain
+- $G$ = Gain
+- $\sigma$ = Radar Cross Section
+- $A_e$ = Antenna Effective Aperture
+- $S_{min}$ = Minimum detector signal 
+    - Can be subsituted for $P_r$ (Signal Power), when $R_{max}$ is beyond which a target cannot be detected.
+- $\lambda$ = Operating wavelength
+
+### Components
+Starting from the Simplest equation:
+1. Antenna Effective Aperture $A_e$ is added:
+    - Def: the area over which the reflected power flux is captured.. Not the same as the physical antenna area $A$ though.
+    - Equation for antenna effective aperture: $A_e = \rho_{a} A$
+    where $\rho_{a}$ is an antenna effiency term
+    - This can be related to the reciever gain: $G_r = \frac{4 \pi A_e}{\lambda^{2}}$
+    - The RADAR equation then becomes: 
+
+### Complex RADAR equation
+
+There are 2 forms here: one with and one without the Loss factors:
+
+Without:
+$R_{max}^{4} = \frac{P_t G_t A_e \sigma}{(4 \pi)^{2} k T_0 \beta_{n} F_n (S/N)_{min}}$
+
+With: 
+$R_{max}^{4} = \frac{P_t G_t A_e \sigma}{(4 \pi)^{2} k T_0 \beta_{n} F_n (S/N)_{min} L_s L_p}$
+
+Where:
+
+ - $R_{max}$  = Maximum RADAR range
+- $P_t$ = Power at isotropic source 
+
+
+
 ___
 ##

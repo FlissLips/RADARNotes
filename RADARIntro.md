@@ -216,5 +216,41 @@ ___
 - Why would this work? Well, when you start to add the returns together, the signals will all be in phase and therefore increase, but the noise will all be out of phase and therefore cancelled out.
 - The number of pulse $n$ which can be collected from a point target is: $n = \frac{\theta_{b} f_p}{\dot{\theta}_s} = \frac{\theta_{b} f_p}{6 \omega_{m}}$ where $f_p$ is the **pulse repetition frequency**, $\theta_{b}$ is the antenna beamwidth, $\dot{\theta}_s$ is the antenna scan rate in deg/s, $\omega_{m}$ is the antenna scan rate in rpm.
 - PRF is very important in RADAR design.
+- This integration can be peformed either before or ater the envelope detection process.
 
+Come back to (75-80)
+
+___
+## RADAR Cross Section Fluctuations 
+- Def: the variations in the RCS of a target over time/ as a function of the angle of incidence of the RADAR signal.
+- They can be caused by a variety of factors, such as the target's orientation, material properties, or surface condition.
+- Therefore fluctuating target models are used to more accurately predict detection statistics
+
+___
+
+## Swerling Target Models
+Def: They are 4 fluctuation models which are used to describe the statistical propertis of RADAR echoes from different types of targets.
+
+Swerling models
+
+| Swerling # | Meaning                                                                                                  | PDF   |
+|------------|----------------------------------------------------------------------------------------------------------|-------|
+| 1          | The fluctuations are of constant amplitude throughout the scan,  but are uncorrelated from scan-to-scan. | $p(\sigma) = \frac{1}{\sigma_{av}} exp \frac{-\sigma}{\sigma_{av}}$ |
+| 2          | Same at Swerling #1, but the fluctuations are uncorrelated pulse-to-pulse                                | $p(\sigma) = \frac{1}{\sigma_{av}} exp \frac{-\sigma}{\sigma_{av}}$|
+| 3          | The fluctuations are independent from scan to scan, but have a different pdf                             | $p(\sigma) = \frac{4 \sigma}{\sigma_{av}^{2}} exp \frac{-2\sigma}{\sigma_{av}}$ |
+| 4          | Same as Swerling #3, but the fluctuations are independent from pulse-to-pulse                            | $p(\sigma) = \frac{4 \sigma}{\sigma_{av}^{2}} exp \frac{-2\sigma}{\sigma_{av}}$ |
+
+$\sigma_{av}$ is the average cross-section over all target fluctuations
+
+Cases 1 and 2 are used for takes with >5 scatterers of equal amplitude (like aircraft). Cases 3 ans 4 are used for targets with one large scatter and many small ones.
+
+### Procedure for using the range equation with a Swerling model
+
+1. Find the SNR for a single pulse, non-fluctuating using the parameters $P_D$ and $P_{FA}$ using the graph below:
+![PD graph 1](images/PD1.png)
+2. For the specific Swerling target you're using, find the additional SNR for the required $P_D$ using the the graph below
+![PD Graph 3](images/PD3.png)
+3. If $n$ pulses are to be integrated, the the integration improvement factor ($I_i(n) = n E_i(n)$) is found using the graph below: 
+![PD Graph 4](images/PD4.png)
+4. The $SNR(n)$ and $n E_I(n)$ are now found and can be subsituted into the range equation, along with the $\sigma_{av}$ and the detection range found.
 

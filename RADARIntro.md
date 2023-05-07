@@ -180,4 +180,38 @@ In order to try and minimise both of these values, we need to derermine the mini
 
 The noise entering the IF filter is assumed to be Gausian, therfore the PDF function can be used here:
 
-Equation: $p(v) = \frac{1}{\sqrt{2 \pi \psi_{0}}} exp \frac{}{}$
+ $p(v) = \frac{1}{\sqrt{2 \pi \psi_{0}}} exp \frac{-v^2}{2 \psi_{0}}$ 
+where $p(v)dv$ is the probability of finding noise voltage $v$, and $\psi_{0}$ is the variance of the noise voltage.
+
+However, the PDF of the post-detection envelope of the noise voltage can be shown to be: 
+
+ $p(v) = \frac{R}{\psi_{0}} exp \frac{-R^2}{2 \psi_{0}}$ where $R$ is the amplitude of the envelope filter output
+
+
+### Probability of false alarm
+
+To find this probability, we integrate the PDF, which is the probability of finding noise voltage:
+
+$Prob(V_t < R < \infin) = \int_{V_t}^{\infty} \frac{R}{\psi_{0}} exp \frac{-R^2}{2\psi_{0}} dr = exp \frac{-V_{t}^{2}}{2\psi_{0}} = P_{fa}$ Where $V_t$ is the threshold voltage
+
+The other thing we can find is the false alarm time $T_{fa}$, which is the time between false alarms:
+
+$T_{fa} = \lim_{N \rightarrow \infty} \frac{1}{N} \sum_{k=1}^{N} T_k$ where $T_k$ is the time between crossings of the threshold $V_t$
+
+Finally, the false alarm probability can also be defined as the ratio of the time the envelope is above the threshold to the total time:
+
+$P_{fa} = \frac{\sum_{k = 1}^{N}t_k}{\sum_{k = 1}^{N}T_k} = \frac{<t_k>_{ave}}{<T_k>_{ave}}= \frac{1}{T_{fa} \beta}$
+
+### Probaility of Detection Come back to
+#### Background (Not for exams)
+1. Start with a sine wave with amplitude A and frequency $f_c$ that is present along with the noise at the input to the IF filter
+2. The input can also be described as a Rician disrubtion:
+3. 
+
+___
+
+## Pulse Integration
+- From previously, we can see that there is a relationship between the probability of false alarm, the probabilty of detection, and the SNR
+- How can we improve SNR? Well, one of the ways is pulse integraton. This works by adding the rarget echo returns from several pulses together.
+- Why would this work? Well, when you start to add the returns together, the signals will all be in phase and therefore increase, but the noise will all be out of phase and therefore cancelled out.
+- The number of pulse $n$ which can be collected from a point target is: $n = \frac{\theta_{b}}{}$

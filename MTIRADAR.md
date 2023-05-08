@@ -45,4 +45,39 @@ Therefore the Doppler shift is function of the range rate $v_r$.
 ![Delay Line Canceller](images/DelayLineCanceller.png)
 - Subtraction of the sweeps are accomplished in a delay line canceller, as shown above.
 - So, the way it works is it converts the signal to the digital domain, delays it by one time step in order to subtract the previous from the original, take the absolute of the subtraction, then convert it back to analog.
--
+
+### Delay-line Canceller Frequency Response
+
+- You can have multiple Delay Line cancellers.
+- The signal at the phase detector output from a target at range $R_0$ as: $V_1 = k \sin (2 \pi f_d t - \phi_{0})$, where:
+    - $\phi_{0}$ = a constant phase equal to $4 \pi R_{0} / \lambda$
+    - $k$ = amplitude of the signal
+- Then the signal from the previous pulse is: $V_{2} = k \sin[ 2 \pi f_d (t - T_p) - \phi_{0}]$
+
+- Then, the output of the delay line canceller is then: $V = V_1 - V_2 = k \sin(\pi f_d T_p) \cos[2 \pi f_d (t - \frac{T_p}{2}) - \phi_{0}]$
+- Here we have 2 terms, an amplitude term and a time-dependent harmonic term.
+- The frequency response of the single delay-line canceller is: $H(f) = 2 \sin (\pi f_d T_p)$ 
+- Plotted is: ![DLC Frequency Response](images/DLCFrequencyResponse.png)
+- This problematic due to:
+    - Blind Speeds: the response of the single delay-line canceller will be zero whenever: $f_d = \frac{2 v_r}{\lambda} = \frac{n}{T_p} = n f_p$ for $n = 0,1,2,...$
+
+### Coherent Pulse Spectrum 
+- We can perform the Fourier Transform across multiple pulses, such as a pulse train.
+- This pulse train in the Fourier Transform has a line spectrum, as shown below: ![Coherent Pulse Spectrum](images/CoherentPulseSpectrum.png)
+- As you can see, it still follows the *sinc* function of a single pulse, but has now has pulse gaps between.
+- Each gap width is equal to the PRF.
+![Clutter Target](images/ClutterTarger.png)
+- The clutter is hard to predict, so instead we define it to be a delta function around zero Doppler frequency.
+- The clutter power spectral density is represented by a Guassian function is: $W(f) = W_0 exp(- \frac{f^2}{2 \sigma_{c}^{2}}) = W_0 exp(- \frac{f^2 \lambda_{2}}{8 \sigma_{v}^{2}})$ Where:
+    - $W_0$ = the peak value of the cluster power spectral density (psd)
+    - $\sigma_{c}$ = standard deviation of the clutter spectrum in Hz
+    - $\sigma_{v}$ = standard deviation of the clutter spectrum in metres/sec 
+- This spectral density can be used in the calculation of the MTI performance through the MTI Improvement factor, which is a measure of clutter attenuation per DLC
+
+![Clutter Spectrum](images/ClutterSpectrum.png)
+- From this spectral density graph, we can see that the using double DLC are more effective at attenuating than single DLC
+
+### Multiple Delay-Line Filters
+![Multiple Delay-line Filter](images/MultipleDelaylineFilters.png)
+
+- Above is the diagram of the multiple Delay-line Filters, which can be extended to an N-pulse delay line canceller.

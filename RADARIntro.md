@@ -24,9 +24,9 @@
 ![Display to Operator Diagram](images/DisplaytoOperator.png)
 
 - **Waveform generator**: generates the carrier waveform
-- **Pulse modulator**: contains rect function.
+- **Pulse modulator**: contains rect function. The rect function is added to the singal to reduce the amount of side lobes in the radiation and therefore make the radiation pattern more directional.
 - **Power amplifier**: inputs WG and Pulse, and does what it says. Outputs the transmit signals
-- *Duplexer*: Dotted line shows it works for both transmit and reciever. Acts like a switch between them. When transmitting, there is 0 impedance across the power amplifier and $\infin$ impedance on the LNRFA. Vice versa for recieving.
+- **Duplexer**: Dotted line shows it works for both transmit and reciever. Acts like a switch between them. When transmitting, there is 0 impedance across the power amplifier and $\infin$ impedance on the LNRFA. Vice versa for recieving.
 - circlely thing AKA the antenn: Sends the signal
 - **Low Noise RF Amplifier**: amplifies the reciever pulse, without introducing significant noise caused at high frequencies. Operating at radio frequencies, so limited components can be used. 
 - *Superhetrodyne*: converts RF pulse to an Intermediate Frequency (IF) pulse by multplying it with the signal from the local oscillator.
@@ -91,7 +91,7 @@ Where
     - Def: the effective area of the object that reflects back the radar signal in the direction of the RADAR transmitter
     - This means it is basically a measure of how detectable that object is.
     - Important note: it's not directly correlated to the physical cross-sectional area. 
-    - Under this assumption, at the RADAR, reflected power flux density recieved = $\frac{P_t G_t \sigma}{(4 \pi R^{2})^{2}}$ Watts/m^2
+    - **Under this assumption, at the RADAR, reflected power flux density recieved = $\frac{P_t G_t \sigma}{(4 \pi R^{2})^{2}}$ Watts/m^2**
 
 
 ### Simple RADAR Equation(s)
@@ -126,7 +126,10 @@ Starting from the Simplest equation:
     - Equation for antenna effective aperture: $A_e = \rho_{a} A$
     where $\rho_{a}$ is an antenna effiency term
     - This can be related to the reciever gain: $G_r = \frac{4 \pi A_e}{\lambda^{2}}$
-    - The RADAR equation then becomes: 
+    - **The RADAR equation then becomes: $P_r = \frac{P_t G_t}{4\pi R^2} \cdot \frac{\sigma}{4\pi R^2} \cdot A_e = \frac{P_t G_t A_e \sigma}{(4\pi)^2 R^4}$**
+4. Bringing it all together
+    - The minimum detectable signal (denoted by $S_{min}$), is equal to $P_r$ when the max radar range is beyond which a target cannot be detected.
+    - You can therefore sub $S_{min} = P_r$, and then rearrange to get the simple radar equation.  
 
 ### Complex RADAR equation
 
@@ -147,7 +150,7 @@ Where:
 - $A_e$ = Antenna Effective Aperture
 - $k$ = Boltzmann's Constant
 - $T_0$ = Temperature reference (290K)
-- $\beta_{n}$ = Noise Bandwifth
+- $\beta_{n}$ = Noise Bandwidth
 - $F_n$ = Noise Figure
 - $(S/N)_{min}$ = Minimum Signal-to-Noise Ratio
 - $L_s$ = System Losses
@@ -163,10 +166,16 @@ Where:
     - Equation: $\frac{N_{out}}{k T_0 \beta_{n} G_a}$ where $N_{out}$ = noise from the reciever, $G_a$ is the antenna gain
     - Equation in terms of S-N: $F_n = \frac{S_{in} / N_{in}}{S_{out} / N_{out}}$
  3. Bringing terms together
-    - **Come back to**
+    - $S_{in} = \frac{k T_0 \beta_n F_n S_{out}}{N_{out}}$
+
+    - **Then if the minimum $S_{min}$ is the same as $S_{in}$, then:
+    $S_{min} = k T_0 \beta_n F_n \left (\frac{S_{out}}{N_{out}}  \right )_{min}$**
+    - Finally, subbing this $S_{min}$ into the RADAR equation produces the complex RADAR equation without losses.
  4. Loss Factor:
-    - There are two different types of losses: Atmospheric propagation losses and System losses
-    - **Come back to**
+    - There are two different types of losses: Atmospheric propagation losses and System losses.
+    - Atompsheric propagation losses are pretty self-explanitory; they're losses cause when the RADAR signal propagates through the atomsphere and passes through clouds and other particles which lessen the energy of the signal.
+    - System losses are the causes of a few key components, but due to the magnitude of causes, are combined into a single expression $L_s$
+    - These system losses include Microwave Plumbing Losses, Antenna Losses, and Signal Processing Losses
 ___
 ## Probabilities of Detection and False Alarm
 

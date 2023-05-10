@@ -85,9 +85,12 @@ Bascially the same thing as the $\alpha-\beta$ filter, but has an acceleration t
 
 Equations:
 - $\hat{\ddot{x}}_{n} = \hat{\ddot{x}}_{n-1} + \frac{\gamma}{{T_{s}}^{2}} (x_n - \hat{x}_{n}^{-})$ 
-    -
+
 - $\hat{x}_{n+1} = \hat{x}_{n} + \hat{\dot{x}}_{n} T_s + \frac{{T_s}^2}{2} \hat{\ddot{x}}_{n}$
-    -
+
+Mean squared error calculations:
+- Measurements: $\varepsilon =\frac{1}{N} \sum_{n=1}^{N}(x_n - y_n)^2$
+- Filter output: $\varepsilon = \frac{1}{N}\sum_{n=1}^{N}(x_n - \hat{x}_n)^2$
 
 ### Selecting alpha and beta values
 - Bandwidth of the filter depends of alpha

@@ -310,6 +310,8 @@ ___
 Imagery collection
 - Target must be kept in FoV under vehicle motion
 - Helped with stabilsation
+### Difference between E0 Stabilisation and EO Tracking
+The difference between EO stabilisation and EO Tracking is that the stabilisation loop is designed to isolate the EO sightline from motion disturbances. The tracking loop moves the EO sighline towards the targets.
 
 ### Performance Requirements
 
@@ -358,7 +360,11 @@ Two fundamental functions for LoS stabilisation/tracking
   - Where the measurement sensors are mounted to the moving platform rather than a stabile base
 - The advantages of this is that is more robust and reliable as the sensors are not subject to external disturbances or suspension.
 
+- Gryo-on-gimbal
+  - Classical design with gyros attached to gimbal frame, no longer used though
+
 - Direct gyro stabilisation
   - A system with a gimbal set with the sensor mounted onto the inner gimbal, to keep it stationary. 
   - To provide a feedback of the cameras torque movement, a gyro is used. They will measure the elevation rate and the cross-elevation rate. 
 
+### Sources of Sightline Error

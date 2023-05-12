@@ -86,14 +86,14 @@ Where $A_d$ = detector angle, $A_s$ = source angle, $\Omega_s$ = source solid an
 
 Therefore, assuming small angles, the flux on the detector: 
 
-$ \Phi = LA_s\Omega_d = L\frac{A_sA_d}{r^2} = LA_d\Omega_s $ 
+$\Phi = LA_s\Omega_d = L\frac{A_sA_d}{r^2} = LA_d\Omega_s $ 
 
 ### Tilted Reciever
 If your reciever is tilted wrt the source:
 ![Tilted Reciever Diagram](images/TiltedReciever.png)
 Then:
 
-$ \Phi = LA_s\Omega_d = L\frac{A_sA_d\cos\theta_d}{r^2}$
+$\Phi = LA_s\Omega_d = L\frac{A_sA_d\cos\theta_d}{r^2}$
 
 ## Lambertian Radiator
 ### Introduction
@@ -122,7 +122,7 @@ An example is shown here:
  
  Here the detector flux is 
 
- $\phi_d = L A_s \cos \theta_{s} \Omega_d = L A_s \cos \frac{A_d}{(r/\cos \theta_s)^2\leq }$
+ $\phi_d = L A_s \cos \theta_{s} \Omega_d$
 
 ### Parallel Surfaces
 
@@ -274,7 +274,7 @@ This includes:
 ### Noise Equivalent Bandwidth Come back to
 - Def: the width of a flat bandpass filter that will pass the same amount of white-noise power as the original transfer function. 
 - It can be found using the frequency response discussed previously (FT of the time domain impulse response.)
-- Equation: $\Delta f = \int_{0}^{\infin} |\frac{\Re(f)}{\Re(f = 0)}|^2 df$
+- Equation: $\Delta f = \int_{0}^{\infty} |\frac{\Re(f)}{\Re(f = 0)}|^2 df$
 
 ![Noise Equivalent Bandwidth](images/NoiseEquivBandwidth.png)
 
@@ -310,7 +310,7 @@ ___
 Imagery collection
 - Target must be kept in FoV under vehicle motion
 - Helped with stabilsation
-### Difference between E0 Stabilisation and EO Tracking
+### Difference between EO Stabilisation and EO Tracking
 The difference between EO stabilisation and EO Tracking is that the stabilisation loop is designed to isolate the EO sightline from motion disturbances. The tracking loop moves the EO sighline towards the targets.
 
 ### Performance Requirements

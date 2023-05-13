@@ -15,8 +15,8 @@ $r(t) = s(t) + n(t)$, where $n(t)$ has a spectral height $\frac{N_0}{2}$ and $s(
 3. The Signal-to-Noise ratio is then: $SNR = \frac{y_{s}^{2}(t)}{E[y_{n}^{2}(t)]}$ where $E[y_{n}^{2}(t)]$ is the expected part of the noise signal. Then subsitute the equations from part (2) here: $\frac{[\int_{0}^{t} s(u) h(t-u) du]^{2}}{E[\int_{0}^{t} n(u) h(t-u) du]^{2}}$
     - It's squared here, as we need positive values to determine the power
 4. The objective here is to find $h(t)$ that maximises this SNR. To do this, we try to simply the noise term: 
-    - $E[y_{n}^{2}(t)] = E\left \{ \left [ \int_{0}^{t} n(u) h(t-u) du \right ] \left [ \int_{0}^{t} n(v) h(t-v) dv \right ] \right \}$ *(a)*
-    - $E[y_{n}^{2}(t)] = \int_{0}^{t} \int_{0}^{t} E\left \{ n(u)n(v) \right \} h(t-u)h(t-v) dudv$ *(b)*
+    - $E[y_{n}^{2}(t)] = E  [ \int_{0}^{t} n(u) h(t-u) du  ]  [ \int_{0}^{t} n(v) h(t-v) dv  ]$ *(a)*
+    - $E[y_{n}^{2}(t)] = \int_{0}^{t} \int_{0}^{t} E { n(u)n(v)} h(t-u)h(t-v) dudv$ *(b)*
     - $E[y_{n}^{2}(t)] = \int_{0}^{t} \int_{0}^{t} \frac{N_0}{2} \delta (u-v) h(t-u)h(t-v) dudv$ *(c)*
     - $E[y_{n}^{2}(t)] = \frac{N_0}{2}  \int_{0}^{t} h^{2}(t-u)du$ *(d)*
         - To transition from (b) to (c), we had to assume the noise sources are uncorrelated. Therefore the expected value of the noise will always be 0 EXCEPT for when v = u. This is why we use the dirac delta function with the expected value $\frac{N_0}{2}$

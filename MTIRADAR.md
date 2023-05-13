@@ -81,3 +81,8 @@ Therefore the Doppler shift is function of the range rate $v_r$.
 ![Multiple Delay-line Filter](images/MultipleDelaylineFilters.png)
 
 - Above is the diagram of the multiple Delay-line Filters, which can be extended to an N-pulse delay line canceller.
+### Delay-Line Canceller Frequency Response
+
+1. Denote the signal at the phase detector output from a target at range: $V_1  = k \sin (2 \pi f_d t - \phi_0)$
+2. The signal from the previous pulse is: $V_2  = k \sin (2 \pi f_d (t - T_p) - \phi_0)$
+3. The output of the delay line canceller: $V = V_1 - V_2 = 

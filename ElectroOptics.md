@@ -5,8 +5,12 @@
 So what constitutes and EO System? Well, there are 4 main components in each system:
 
 1. A Sensor
+  - TV and/or IR Camera 
 2. Optics (either reflective or refractive)
+  - Reflective (mirrors) or refractive (lenses)
 3. Pointing or stabilisation
+  - Gimballed Sevromechanisms
+  - Mirror Control
 4. Electronics (this includes sightline control, processing and tracking)
 
 ### Benefits of EO
